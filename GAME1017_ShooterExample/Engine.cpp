@@ -9,6 +9,12 @@
 #define PSPEED 6
 using namespace std;
 
+Engine& Engine::GetInstance() {
+	static Engine instance;
+	return instance;
+}
+
+
 Engine::Engine() :m_iESpawn(0), m_iESpawnMax(60), m_pivot({ 0,0 })
 {	// Again showing a mix of either initializers or in-body initialization. Initializers happen first.
 	m_bRunning = m_bEBNull = m_bENull = m_bPBNull = false; // Setting all to false.

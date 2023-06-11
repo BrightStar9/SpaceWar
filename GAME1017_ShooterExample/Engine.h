@@ -36,7 +36,19 @@ private: // Private properties.
 	Mix_Music* m_pMusic;
 	vector<Mix_Chunk*> m_vSounds;
 
+
+
 private: // Private methods.
+
+	//Private constructor and deconstructor for singleton
+	Engine();
+	~Engine();
+
+	//only one instance
+	Engine(const Engine&) = delete;
+	Engine& operator=(const Engine&) = delete;
+
+
 	bool Init(const char* title, int xpos, int ypos, int width, int height, int flags);
 	void Wake();
 	void Sleep();
@@ -46,8 +58,10 @@ private: // Private methods.
 	void Update();
 	void Render();
 	void Clean();
+
 public: // Public methods.
-	Engine();
-	~Engine();
+	
+	static Engine& GetInstance();
+	
 	int Run();
 };
